@@ -1,0 +1,26 @@
+@use 'Color';
+
+.form__group {
+  color: Color.$blue;
+  &__control {
+    margin-bottom: 20px;
+  }
+}
+// .form-group-control {
+//   margin-bottom: 20px;
+// }
+.loginButton.btn.btn-primary {
+  float: right;
+  background: Color.$blue;
+  border: none;
+  margin-left: 10px;
+  &:hover {
+    background-color: Color.$blue_7;
+  }
+  &:active {
+    background-color: Color.$blue_7;
+  }
+  &:focus {
+    background-color: Color.$blue_7;
+  }
+}

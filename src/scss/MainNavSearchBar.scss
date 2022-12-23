@@ -1,0 +1,35 @@
+@use 'Color';
+
+.MainNavSearchbar {
+  margin-right: 30px;
+  grid-template-columns: 400px auto;
+  justify-content: center;
+  z-index: 999;
+
+  &__input {
+    display: block;
+    max-width: 300px;
+    font-size: 0.7em;
+    float: inline-end;
+    align-self: center;
+    justify-self: start end;
+    border: 1px solid Color.$blue;
+    border-radius: 5px;
+    text-align: center;
+    &:focus {
+      // !important 안 주면 적용 안됨.
+      box-shadow: none !important;
+    }
+  }
+  &__btn.btn.btn-primary {
+    background: Color.$blue;
+    color: Color.$white;
+    --bs-btn-border-color: none;
+    &:hover {
+      background-color: Color.$blue_7;
+    }
+    &::active {
+      background-color: Color.$blue_7;
+    }
+  }
+}

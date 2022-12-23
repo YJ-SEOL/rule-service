@@ -1,0 +1,25 @@
+@use '../Color.scss';
+
+.rulelist__header {
+  height: 5vh;
+  --bs-breadcrumb-divider: '>';
+
+  & .breadcrumb {
+  }
+
+  & .breadcrumb-item {
+    --bs-breadcrumb-divider-color: Color.$gray;
+    --bs-breadcrumb-active-color: Color.$gray;
+  }
+}
+
+.rulelist__header {
+}
+
+.rulelist__header__breadcrumb {
+  line-height: 5vh;
+}
+.breadcrumb-item > a {
+  text-decoration: none;
+  color: Color.$gray;
+}

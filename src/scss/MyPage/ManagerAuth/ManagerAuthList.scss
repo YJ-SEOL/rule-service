@@ -1,0 +1,92 @@
+@use '../../Color';
+
+.ManagerAuthList {
+  width: 100%;
+  max-height: 93vh;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  overflow-y: scroll;
+  // white-space: nowrap;
+  text-overflow: ellipsis;
+  display: grid;
+  // text-align: left;
+  align-items: center;
+
+  & .accordion-body {
+    padding: 0;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.Authcollapse {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0 0 8px;
+  }
+  
+  &__title {
+    font-size: 16px;
+    max-width: 280px;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    // font-weight: 600;
+  }
+
+  & svg {
+    width: 20px;
+    height: 20px;
+    border: none;
+    margin-bottom: 10px;
+  }
+  &__toggle {
+    transition: all ease 0.1s;
+    cursor: pointer;
+    
+    &:hover {
+      color: Color.$orange;
+    }
+
+    &.open {
+      transform: rotate(180deg);
+      color: Color.$orange;
+    }
+  }
+
+
+  &__content {
+    max-width: 330px;
+    height: 0;
+    overflow: hidden;
+    transition: all ease 0.1s;
+    
+    &.open {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    
+    &__sub {
+      margin: 5px 0 10px 30px;
+      font-size: 14px;
+      max-width: 330px;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+      // text-overflow: ellipsis;
+
+      &:hover {
+        color: Color.$orange;
+        cursor: pointer;
+      }
+    }
+  }
+}

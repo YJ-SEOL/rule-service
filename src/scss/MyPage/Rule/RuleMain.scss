@@ -1,0 +1,37 @@
+@use '../../Color';
+
+.rulemain {
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  margin: 0 auto;
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    margin: 10px auto;
+    flex-direction: row;
+
+    & Button {
+      align-items: center;
+      color: Color.$blue;
+      margin: 15px;
+      min-width: 120px;
+      height: 40px;
+      background: none;
+      border: 1px solid Color.$blue;
+      border-radius: 40px 40px;
+      &:hover {
+        border: none;
+        background: Color.$blue_7;
+        font-weight: bold;
+      }
+      &:active {
+        border: none;
+        background: Color.$blue_7;
+        font-weight: bold;
+      }
+    }
+  }
+}

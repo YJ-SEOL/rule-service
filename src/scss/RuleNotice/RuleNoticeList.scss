@@ -1,0 +1,45 @@
+@use '../Color.scss';
+
+.rulenotice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  margin: 0 auto;
+
+  &__btn {
+    margin-left: auto;
+    margin-bottom: 10px;
+    display: flex;
+    width: 110px;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & .btn {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+
+  &__backbtn {
+    align-self: end;
+    width: 60px;
+    margin-left: auto;
+    justify-content: end;
+    float: right;
+
+    &.btn {
+      font-size: 14px;
+      margin: 0;
+    }
+  }
+  & Table {
+    // border: 1px solid Color.$gray;
+    border-radius: 10px;
+    border-collapse: separate;
+
+    & tr:nth-child(3) {
+      height: 40vh;
+    }
+  }
+}

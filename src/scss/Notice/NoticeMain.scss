@@ -1,0 +1,87 @@
+@use '../Color';
+
+.page {
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  margin: 0 auto;
+  display: flex;
+
+  &__notice {
+    margin-top: 40px;
+    margin-left: 100px;
+    width: 80vw;
+
+    &__title {
+      margin-bottom: 1em;
+    }
+    &__search {
+      margin-bottom: 1em;
+      height: 36px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &__createbtn {
+        width: 80px;
+      }
+      &__bar {
+        margin-left: auto;
+        border: 1px solid #ced4da;
+        // box-shadow: none !important;
+        --bs-focus-shadow-rgb: none;
+        --bs-focus-shadow: none;
+        padding: 0.375rem 0.75rem;
+
+        &.form-control {
+          //   border: none;
+          max-width: 300px;
+          display: block;
+          box-shadow: none !important;
+          &:focus {
+            border: 1px solid lightgray;
+          }
+        }
+      }
+      &__btn {
+        &.btn-primary {
+          background: none;
+          //   수정해야함
+          border: 1px solid #ced4da;
+          --bs-btn-active-border-color: none;
+          --bs-btn-active-shadow: none;
+          --bs-btn-hover-color: none;
+          --bs-btn-hover-bg: none;
+          --bs-btn-hover-border-color: none;
+          --bs-btn-focus-shadow-rgb: none;
+          &:hover {
+            border: 1px solid lightgray;
+          }
+          &:active {
+            border: 1px solid lightgray;
+          }
+          &:focus {
+            border: 1px solid lightgray;
+          }
+        }
+        & svg {
+          color: Color.$blue;
+          vertical-align: top;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    &__list {
+      text-align: center;
+      & tr:nth-child(n) {
+        height: 40px;
+      }
+      & tr:nth-child(1) {
+        position: sticky;
+        background-color: Color.$headerBack;
+        font-weight: bold;
+      }
+    }
+  }
+}

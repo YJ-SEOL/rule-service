@@ -1,0 +1,139 @@
+@use '../../Color.scss';
+
+.userauth {
+  max-width: 100vw;
+  display: block;
+  
+  & h2 {
+    text-align: center;
+    margin: 20px 0 20px 0px;
+    // max-width: 100%;
+  }
+
+  &__search {
+    width: 400px;
+    height: 30px;
+    margin: 0px 0 10px 100px;
+      
+    &__bar {
+      height: 30px;
+      display: block;
+      max-width: 300px;
+      font-size: 0.7em;
+      float: inline-end;
+      align-self: center;
+      justify-self: start end;
+      border: 1px solid Color.$gray;
+      border-radius: 5px;
+      text-align: center;
+      &:focus {
+        // !important 안 주면 적용 안됨.
+        box-shadow: none !important;
+      }
+    }
+    
+    // & svg {
+    //   margin: 0 0 2px 3px;
+    //   width: 20px;
+    //   height: 20px;
+    //   border: none;
+    // }
+    &__btn.btn.btn-primary {
+      width: 40px;
+      // width: 50px;
+      border: 1px solid Color.$gray;
+      background: Color.$blue;
+      padding: 0;
+      --bs-btn-border-color: none;
+      &:hover {
+        background-color: Color.$blue_7;
+      }
+      &::active {
+        background-color: Color.$blue_7;
+      }
+    }   
+  }
+
+  &__table {
+    max-width: 90vw;
+    height: 70vh;
+    margin-left: 90px;
+    display: flex;
+    overflow: auto;
+    border: 1px solid Color.$headerBack;
+
+    &__list {
+      position: sticky;
+      top: 0;
+      width: 23vw;
+      height: auto;
+      border-right: 1px solid Color.$headerBack;
+      border-bottom: 1px solid Color.$headerBack;
+      
+      & h5 {
+        border-bottom: 1px solid #ddd;
+        background-color: Color.$headerBack;
+        text-align: center;
+        padding: 8px 0 8px 0;
+        font-weight: bold;
+        color: Color.$blue_7;
+      }
+      
+    }
+    
+    &__check {
+        width: 77vw;
+        height: 700px;
+        
+        &__box {
+          position: relative;
+          
+          &__header {
+            position: sticky;
+            top: 0;
+            background-color: Color.$headerBack;
+            font-weight: bold;
+            border-bottom: 1px solid Color.$gray;
+            
+            & th {
+              width: 7vw;
+              height: 40px;
+              text-align: center;
+            }
+            & th:nth-last-child(1) {
+              width: 29.6vw;
+            }
+          }
+
+          &__bottom {
+            height: 700px;
+            text-align: center;
+            overflow: hidden;
+
+              & td {
+                height: 50px;
+                border-bottom: 1px solid Color.$gray;
+              }
+              
+              &__button {
+                
+                & Button {
+                  background-color: Color.$headerBack;
+                  color: #000;
+                  border: none;
+                  font-size: 14px;
+                  margin-left: 20px;
+                  
+                  &:hover {
+                    background-color: Color.$blue;    
+                  }
+                  & Button.active {
+                    background-color: Color.$blue;    
+                  }
+                }
+              }
+            }
+        }
+      }
+  }
+}

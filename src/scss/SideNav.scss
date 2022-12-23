@@ -1,0 +1,237 @@
+@use 'Color';
+
+.sidenav {
+  margin: 0;
+  width: 80px;
+  height: 100%;
+  margin-top: 0;
+  background: Color.$blue;
+  place-items: start;
+  align-content: space-between;
+  display: block;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 40px;
+  position: fixed;
+  // min-height: 720px;
+  box-sizing: border-box;
+  z-index: 45;
+
+  & a {
+    text-decoration: none;
+    border-inline-start: none;
+    &:active {
+      text-decoration: none;
+      border-inline-start: none;
+    }
+  }
+
+  &__Icon {
+    position: fixed;
+    margin: 0 auto;
+    float: left;
+    width: 80px;
+    place-items: start;
+    max-height: 600px;
+    display: block;
+    grid-template-rows: repeat(4, minmax(90px, auto));
+
+    &__link {
+      &__block {
+        text-align: center;
+        width: 80px;
+        position: static;
+        z-index: 10;
+        color: Color.$white;
+        // height: 90px;
+        margin: 0 auto;
+        display: grid;
+        &.openmenu {
+          border-inline-start: 4px solid Color.$orange;
+          background-color: Color.$blue_7;
+          & span {
+            color: Color.$orange;
+            font-weight: bold;
+          }
+        }
+        &:hover {
+          border-inline-start: 4px solid Color.$orange;
+          background-color: Color.$blue_7;
+          & span {
+            color: Color.$orange;
+            font-weight: bold;
+          }
+        }
+        &__style {
+          width: 60px;
+          z-index: 10;
+          color: Color.$white;
+          height: 60px;
+          margin: 0 auto;
+          display: block;
+          transition: 0.5s ease-in-out;
+          &:active {
+            border-color: Color.$orange;
+            background-color: Color.$blue_7;
+          }
+        }
+
+        // &__block {
+        //   text-align: center;
+        //   width: 80px;
+        //   position: static;
+        //   z-index: 10;
+        //   color: Color.$white;
+        //   height: 90px;
+        //   margin: 0 auto;
+        //   display: grid;
+
+        //   &:hover {
+        //     border-inline-start: 4px solid Color.$orange;
+        //     background-color: Color.$blue_7;
+
+        //     & span {
+        //       color: Color.$orange;
+        //       font-weight: bold;
+        //     }
+        //   }
+
+        //   &__style {
+        //     width: 60px;
+        //     z-index: 10;
+        //     color: Color.$white;
+        //     height: 60px;
+        //     margin: 0 auto;
+        //     display: block;
+        //     transition: 0.5s ease-in-out;
+        //     &:active {
+        //       border-color: Color.$orange;
+        //       background-color: Color.$blue_7;
+        //     }
+        //   }
+        // }
+      }
+    }
+    // &__block {
+    //   text-align: center;
+    //   width: 80px;
+    //   position: static;
+    //   z-index: 10;
+    //   color: Color.$white;
+    //   height: 90px;
+    //   margin: 0 auto;
+    //   display: grid;
+
+    //   &:hover {
+    //     border-inline-start: 4px solid Color.$orange;
+    //     background-color: Color.$blue_7;
+
+    //     & span {
+    //       color: Color.$orange;
+    //       font-weight: bold;
+    //     }
+    //   }
+
+    //   &__style {
+    //     width: 60px;
+    //     z-index: 10;
+    //     color: Color.$white;
+    //     height: 60px;
+    //     margin: 0 auto;
+    //     display: block;
+    //     transition: 0.5s ease-in-out;
+    //     &:active {
+    //       border-color: Color.$orange;
+    //       background-color: Color.$blue_7;
+    //     }
+    //   }
+    // }
+    & span {
+      z-index: 10;
+      color: Color.$white;
+      font-size: 13px;
+      justify-self: center;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  &__setting {
+    clear: both;
+    align-self: end;
+    width: 80px;
+    position: fixed;
+    max-height: 200px;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(90px, auto));
+    row-gap: 10px;
+
+    &__block {
+      position: absolute;
+      text-align: center;
+      width: 80px;
+      padding: 4px;
+      z-index: 10;
+      color: Color.$white;
+      height: 80px;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+
+      &:hover {
+        & svg {
+          color: Color.$orange;
+        }
+      }
+
+      &:active {
+        & svg {
+          color: Color.$orange;
+        }
+        // background-color: darken($blue, 7%);
+      }
+      &__Icon {
+        width: 70px;
+        z-index: 10;
+        color: Color.$white;
+        height: 40px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+}
+
+.toggle {
+  background-color: Color.$blue_7;
+  position: absolute;
+  min-height: 100vh;
+  top: 0;
+  place-items: start;
+  text-decoration: none;
+  transform: translate(80px, 0);
+  transition: 0.5s ease-in-out;
+  z-index: 999;
+  text-decoration: none;
+
+  & a {
+    text-decoration: none;
+  }
+  &__menu {
+    text-decoration: none;
+    width: 250px;
+    transition: 0.5s ease-in-out;
+    text-align: center;
+    color: Color.$white;
+    margin: 0 auto;
+    & > li {
+      text-decoration: none;
+    }
+  }
+}
+// .active {
+//   border-inline-start: 4px solid Color.$orange;
+//   background-color: Color.$blue_7;
+//   & span {
+//     color: Color.$orange;
+//     font-weight: bold;
+//   }
+// }

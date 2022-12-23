@@ -1,0 +1,29 @@
+@use '../../Color.scss';
+
+.list {
+  width: 80vw;
+  flex-direction: column;
+  margin: auto;
+  max-height: 40px;
+  margin-left: 80px;
+
+  &__title {
+    &__status {
+      margin: 1rem auto;
+      padding: 1rem;
+      border-radius: 1rem;
+      flex-wrap: wrap;
+      text-align: center;
+      overflow-y: hidden;
+
+      & tr:nth-child(n) {
+        height: 40px;
+      }
+      & tr:nth-child(1) {
+        position: sticky;
+        background-color: Color.$headerBack;
+        font-weight: bold;
+      }
+    }
+  }
+}

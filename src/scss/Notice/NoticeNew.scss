@@ -1,0 +1,24 @@
+@use '../Color.scss';
+
+.noticeEdit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  & svg {
+    width: 2em;
+    height: 2em;
+    fill: Color.$blue;
+    &:hover {
+      fill: Color.$orange;
+    }
+  }
+  &__edit {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    & .ql-editor {
+      height: 400px;
+    }
+  }
+}

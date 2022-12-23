@@ -1,0 +1,36 @@
+@use 'Color';
+
+.mainicon {
+  width: 700px;
+  height: 300px;
+  display: grid;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 60px;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 22px;
+  text-align: center;
+
+  &__style {
+    border: 2px solid Color.$blue;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    margin: 0 auto;
+    fill: Color.$blue;
+
+    &:hover {
+      background: Color.$blue;
+      border-radius: 4px solid Color.$blue;
+      fill: white;
+      font-weight: bold;
+    }
+
+    &:active {
+      background: lighten(Color.$blue, 15%);
+    }
+  }
+}

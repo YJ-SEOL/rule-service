@@ -1,0 +1,53 @@
+@use 'Color';
+
+.mainserch {
+  height: 320px;
+  background-color: Color.$gray;
+  padding: 16px;
+  font-size: 24px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  position: relative;
+
+  &__section {
+    height: 280px;
+    display: grid;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 30px;
+
+    &__searchbar {
+      text-align: center;
+      width: 400px;
+      max-width: 100%;
+      margin: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    &__button.btn-primary {
+      margin: 0 auto;
+      width: 130px;
+      background-color: Color.$blue;
+      border: none;
+      // --bs-btn-active-bg: none;
+
+      &:hover {
+        background-color: Color.$blue_7;
+      }
+      &.btn {
+        &:active {
+          background-color: Color.$blue_7 !important;
+        }
+      }
+    }
+  }
+}
+// .mainserch__section__button.btn.btn-primary:active {
+//   background-color: Color.$blue_7;
+// }

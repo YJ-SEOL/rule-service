@@ -1,0 +1,189 @@
+@use 'Color';
+
+.header {
+  min-width: 600px;
+  background: Color.$headerBack;
+  min-height: 65px;
+  max-height: 7vh;
+  padding: 8px;
+  font-size: 24px;
+  display: grid;
+  position: sticky;
+  flex-direction: column;
+  place-content: start end;
+  align-content: center;
+  // display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  z-index: 99;
+  max-width: 100%;
+
+  &__button {
+    display: grid;
+    grid-template-columns: 220px 10px 220px 2fr;
+    row-gap: 5px;
+  }
+
+  & span {
+    align-self: center;
+  }
+
+  &__buttonStyleleft {
+    width: 200px;
+    background-color: transparent;
+    border: none;
+    color: Color.$blue;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+  &__buttonStyleright {
+    width: 200px;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 20px;
+    color: Color.$blue;
+    font-weight: bold;
+  }
+  &__search {
+    position: relative;
+    float: right;
+    margin: 0 auto;
+    margin-right: 30px;
+    display: grid;
+    flex-direction: column;
+    gap: 20px;
+    grid-template-columns: 350px auto;
+    justify-content: end;
+    justify-items: end;
+    z-index: 999;
+
+    &__login.btn-primary {
+      justify-self: end;
+      min-width: fit-content;
+      font-size: 0.7em;
+      font-weight: bold;
+      max-width: 100px;
+      background: Color.$blue;
+      border: none;
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      column-gap: 10px;
+      & svg {
+        width: 1.5em;
+        height: 1.5em;
+        margin: 0 auto;
+      }
+      &:hover {
+        background-color: Color.$blue_7;
+      }
+      &:active {
+        background-color: Color.$blue_7;
+      }
+    }
+
+    &__logout {
+      background-color: none;
+      border: none;
+      width: 80px;
+      --bs-btn-bg: none;
+      --bs-btn-border-color: none;
+      --bs-btn-hover-bg: none;
+      --bs-btn-hover-border-color: none;
+      --bs-btn-active-bg: none;
+      &:hover {
+        color: Color.$orange;
+      }
+      &:active {
+        // color: Color.$orange;
+        background-color: none;
+        border: none;
+      }
+
+      &.userDialog {
+        background-color: none;
+        border: none;
+        width: 80px;
+      }
+
+      svg {
+        color: Color.$blue;
+        width: 1.5em;
+        height: 1.5em;
+        &:hover {
+          color: Color.$orange;
+          box-shadow: 0 0 3px 3px Color.$gray;
+          border-radius: 50%;
+        }
+        &:active {
+          color: Color.$orange;
+        }
+      }
+    }
+  }
+}
+.btn-close {
+  float: right;
+}
+
+.modal-header {
+  font-size: 1.3em;
+  color: Color.$blue;
+  font-weight: bold;
+}
+.modal-header > svg {
+  opacity: 0.5;
+}
+
+.modal-title {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 13px;
+}
+
+.UserInfoModal {
+  & .modal-header {
+    padding: 7px;
+  }
+  & .modal-dialog {
+    padding: 5px;
+
+    top: 3vh;
+    right: 2vw;
+    position: absolute;
+  }
+  &__sec {
+    &__name {
+      font-size: 18px;
+      text-align: center;
+      margin-right: 20px;
+    }
+    &__logoutBtn.btn.btn-primary {
+      background: Color.$blue;
+      --bs-btn-border-color: none;
+      float: right;
+      justify-items: center;
+      &:hover {
+        background-color: Color.$blue_7;
+      }
+    }
+    &__UserInfo > a {
+      text-decoration: none;
+      color: Color.$blue;
+      border-inline-start: none;
+      background-color: transparent;
+      text-align: center;
+      display: block;
+
+      &:hover {
+        font-weight: bold;
+        color: Color.$blue_7;
+      }
+    }
+  }
+}
+
+.modal-backdrop.UserInfo.show {
+  --bs-backdrop-bg: none;
+}
