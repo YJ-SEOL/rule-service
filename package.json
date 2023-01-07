@@ -18,6 +18,7 @@
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
+    "react-js-pagination": "^3.0.3",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
@@ -34,7 +35,8 @@
     "eject": "react-scripts eject",
     "login-server": "json-server-auth ./db/login.json -p 3030",
     "sidenav-server": "json-server ./db/sidenav.json -p 4000",
-    "notice-server": "json-server ./db/notice.json -p 5000"
+    "notice-server": "json-server ./db/notice.json -p 5000",
+    "pagenation-server" : "json-server ./db/noticeTest.json -p 5050"
   },
   "browserslist": {
     "production": [

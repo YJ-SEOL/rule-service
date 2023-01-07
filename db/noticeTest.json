@@ -1,9 +1,9 @@
 {
-  "notices": [
+  "pagenationtest": [
     {
       "id": 1,
       "date": "",
-      "view": 3,
+      "view": 2,
       "title": "title이다",
       "contents": "본문"
     },
@@ -24,14 +24,14 @@
     {
       "title": "ere",
       "contents": "dfsdf\n",
-      "view": 3,
+      "view": 0,
       "date": "2023-01-07 14:59:38",
       "id": 4
     },
     {
       "title": "dfe",
       "contents": "sdfe\n",
-      "view": 2,
+      "view": 0,
       "date": "2023-01-07 16:37:08",
       "id": 5
     },

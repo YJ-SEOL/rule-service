@@ -1,0 +1,25 @@
+{
+  "notices": [
+    {
+      "id": 1,
+      "date": "",
+      "view": 0,
+      "title": "title이다",
+      "contents": "본문"
+    },
+    {
+      "title": "dsf",
+      "contents": "sdfsd\n",
+      "view": 0,
+      "date": "2022-12-22 23:12:07",
+      "id": 2
+    },
+    {
+      "title": "dsf",
+      "contents": "asdfawe\n",
+      "view": 0,
+      "date": "2022-12-22 23:12:14",
+      "id": 3
+    }
+  ]
+}

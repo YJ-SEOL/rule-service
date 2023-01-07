@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Form from 'react-bootstrap/Form';
-import { Table, InputGroup, Button } from 'react-bootstrap';
-import { BsSearch } from 'react-icons/bs';
+// import Form from 'react-bootstrap/Form';
+import { Table, Button } from 'react-bootstrap';
+// import { BsSearch } from 'react-icons/bs';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Pagination from 'react-js-pagination';
 
 const NoticeTable = ({ notice, index }) => {
   return (
@@ -18,6 +19,42 @@ const NoticeTable = ({ notice, index }) => {
     </tr>
   );
 };
+const Paging = () => {
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState();
+  useEffect(() => {
+    const fetchNotice = async () => {
+      const response = await axios({
+        method: 'GET',
+        url: 'http://localhost:5000/notices/',
+      });
+      const title = response.data;
+      console.log(`title=${JSON.stringify(response.data)}`);
+      // 역순으로 화면에 뿌리기 'reverse()
+      setCount(title.length);
+    };
+    fetchNotice();
+  }, []);
+  // const limit = notice.title.length;
+  // console.log(`limit=${limit}`);
+  // console.log(`count= ${count}`);
+
+  const handlePageChange = () => {
+    setPage(page);
+    // console.log(`pageNm = ${pageNumber}`);
+  };
+  return (
+    <section>
+      <Pagination
+        activePage={page}
+        itemsCountPerPage={3}
+        totalItemsCount={count}
+        pageRangeDisplayed={5}
+        onChange={handlePageChange}
+      />
+    </section>
+  );
+};
 
 const NoticeList = () => {
   const [create, setCreate] = useState(false);
@@ -29,6 +66,7 @@ const NoticeList = () => {
   };
 
   const [notices, setNotices] = useState([]);
+
   useEffect(() => {
     const fetchNotice = async () => {
       const response = await axios({
@@ -37,7 +75,6 @@ const NoticeList = () => {
       });
       const title = response.data;
       console.log(`title=${JSON.stringify(response.data)}`);
-
       // 역순으로 화면에 뿌리기 'reverse()
       setNotices(title.reverse());
     };
@@ -70,7 +107,7 @@ const NoticeList = () => {
         )}
         {currentUser && null}
         {/* 검색창 */}
-        <InputGroup>
+        {/* <InputGroup>
           <Form.Control
             className='page__notice__search__bar'
             placeholder='검색어를 입력하세요'
@@ -78,7 +115,7 @@ const NoticeList = () => {
           <Button className='page__notice__search__btn'>
             <BsSearch />
           </Button>
-        </InputGroup>
+        </InputGroup> */}
       </section>
       {/* 공지사항 리스트 */}
       <section className='page__notice__list'>
@@ -99,7 +136,9 @@ const NoticeList = () => {
         </Table>
       </section>
       {/* 페이지네이션 */}
-      <section className='page__notice__pagenation'>
+      <Paging />
+
+      {/* <section className='page__notice__pagenation'>
         <nav aria-label='Page navigation example'>
           <ul className='pagination justify-content-center'>
             <li className='page-item disabled'>
@@ -129,7 +168,7 @@ const NoticeList = () => {
             </li>
           </ul>
         </nav>
-      </section>
+      </section> */}
     </div>
   );
 };

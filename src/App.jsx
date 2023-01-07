@@ -19,6 +19,7 @@ import NoticeMain from './components/Notice/NoticeMain';
 // import RuleStatus from './components/MyPage/Rule/RuleStatus';
 import UserInfo from './components/MyPage/UserInfo';
 import NoticeList from './components/Notice/NoticeList';
+import NoticeListCopy from './components/Notice/NoticeListCopy';
 import Notice from './components/Notice/Notice';
 import NoticeNew from './components/Notice/NoticeNew';
 // import ManagerAuth from './components/MyPage/ManagerAuth/ManagerAuth';
@@ -91,6 +92,7 @@ const App = () => {
             // </PrivateRoute>
           }>
           <Route index element={<NoticeList />} />
+          <Route path='pagenationtest' element={<NoticeListCopy />} />
           {/* 공지사항 상세페이지 이동 */}
           <Route path=':id' element={<Notice />} />
           {/* 새 공지사항 쓰기 */}

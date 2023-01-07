@@ -57,7 +57,8 @@ const Rule = () => {
       const paramsId = id;
       const response = await axios({
         method: 'GET',
-        url: `http://rms.sdenet.co.kr/Rule/${paramsId}`,
+        // url: `http://rms.sdenet.co.kr/Rule/${paramsId}`,
+        url: `https://apis.data.go.kr/6460000/ruleList/getRuleListList?serviceKey=HX3YdSG2Sj5y0ppK0QokmAkOGowAP1XnBgrwtN3WZHsLmbUy0QUXhBJ1VFYKP7d7bHFap5OsLvfr7Qmqc37Kww==&ruleOrganNm=%EB%85%B9%EC%83%89%EC%97%90%EB%84%88%EC%A7%80%EC%97%B0%EA%B5%AC%EC%9B%90&pageSize=20&startPage=1/${paramsId}`,
         // data: JSON.stringify({ id }),
       });
 

@@ -46,13 +46,15 @@ const DummyTr = () => {
 const RuleList = () => {
   const [rules, setRules] = useState([]);
   const { id } = useParams();
+  const { ruleKey } = useParams();
 
   useEffect(() => {
     console.log(id);
     const fetchIndex = async () => {
       const response = await axios({
         method: 'GET',
-        url: `http://rms.sdenet.co.kr/Category/1`,
+        // url: `http://rms.sdenet.co.kr/Category/1`,
+        url: `https://apis.data.go.kr/6460000/ruleList/getRuleListList?serviceKey=HX3YdSG2Sj5y0ppK0QokmAkOGowAP1XnBgrwtN3WZHsLmbUy0QUXhBJ1VFYKP7d7bHFap5OsLvfr7Qmqc37Kww==&ruleOrganNm=녹색에너지연구원/${ruleKey}`,
       });
       console.log(response.data);
       const categoriesData = response.data;
@@ -62,7 +64,8 @@ const RuleList = () => {
     const fetchRules = async () => {
       const response = await axios({
         method: 'GET',
-        url: `http://rms.sdenet.co.kr/Category/${id}`,
+        // url: `http://rms.sdenet.co.kr/Category/${id}`,
+        url: `https://apis.data.go.kr/6460000/ruleList/getRuleListList?serviceKey=HX3YdSG2Sj5y0ppK0QokmAkOGowAP1XnBgrwtN3WZHsLmbUy0QUXhBJ1VFYKP7d7bHFap5OsLvfr7Qmqc37Kww==&ruleOrganNm=녹색에너지연구원/${ruleKey}`,
       });
       console.log(response.data);
       const categoriesData = response.data;
@@ -94,7 +97,8 @@ const RuleList = () => {
           </tr>
         </thead>
         <tbody className='table-group-divider'>
-          {rules && rules.map(rule => <RuleTr key={rule.id} rule={rule} />)}
+          {rules &&
+            rules.map(rule => <RuleTr key={rule.ruleKey} rule={rule.ruleNm} />)}
           <DummyTr />
         </tbody>
       </Table>

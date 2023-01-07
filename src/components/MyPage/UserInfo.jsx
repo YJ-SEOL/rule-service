@@ -1,6 +1,7 @@
 import React from 'react';
 import { CgUserlane } from 'react-icons/cg';
 // import '../../scss/MyPage/UserInfo.scss';
+
 import AuthService from '../../common/auth/AuthService';
 
 const UserInfo = () => {
