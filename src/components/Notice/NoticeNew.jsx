@@ -8,7 +8,7 @@ import axios from 'axios';
 import '../../scss/Notice/NoticeNew.scss';
 // import AuthService from '../../common/auth/AuthService';
 
-const NoticeNew = () => {
+const NoticeNew = ({ path }) => {
   const quillRef = useRef();
   const [quillValue, setQuillValue] = useState('');
   const [t, setT] = useState('');
@@ -73,6 +73,30 @@ const NoticeNew = () => {
     goBack();
   };
 
+  const HandleEditSumbit = async () => {
+    // const { department } = user;
+    const now = new Date().toISOString().substring(0, 10);
+    const clock = new Date().toTimeString().split(' ')[0];
+    const description = quillRef.current.getEditor().getText();
+    console.log(`description`);
+    console.log(t);
+    // console.log(department);
+    const newnotice = await axios({
+      method: 'PATCH',
+      url: `http://localhost:5000/notices/${id}`,
+      data: {
+        title: t,
+        // department: user.department,
+        contents: description,
+        view: 0,
+        date: `${now} ${clock}`,
+      },
+    });
+    console.log(`newnotice = ${newnotice}`);
+    console.log(typeof description);
+    console.log('제출');
+    goBack();
+  };
   const modules = useMemo(() => ({
     toolbar: {
       container: [
@@ -94,9 +118,15 @@ const NoticeNew = () => {
     <div className='noticeEdit'>
       <section className='noticeEdit__btn'>
         <CiCircleChevLeft type='button' onClick={goBack} />
-        <Button className='notice__backbtn' onClick={HandleSumbit}>
-          등록
-        </Button>
+        {path === '/' ? (
+          <Button className='notice__backbtn' onClick={HandleSumbit}>
+            등록
+          </Button>
+        ) : (
+          <Button className='notice__backbtn' onClick={HandleEditSumbit}>
+            수정
+          </Button>
+        )}
       </section>
       <section className='noticeEdit__edit'>
         <div className='noticeEdit__edit__title'>
