@@ -35,8 +35,7 @@
     "eject": "react-scripts eject",
     "login-server": "json-server-auth ./db/login.json -p 3030",
     "sidenav-server": "json-server ./db/sidenav.json -p 4000",
-    "notice-server": "json-server ./db/notice.json -p 5000",
-    "pagenation-server" : "json-server ./db/noticeTest.json -p 5050"
+    "notice-server": "json-server ./db/notice.json -p 5000"
   },
   "browserslist": {
     "production": [

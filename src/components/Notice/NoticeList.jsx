@@ -5,11 +5,12 @@ import { Table, Button } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Pagination from 'react-js-pagination';
+import '../../scss/pagination.scss';
 
-const NoticeTable = ({ notice, index }) => {
+const NoticeTable = ({ notice }) => {
   return (
     <tr>
-      <td>{index + 1}</td>
+      <td>{notice.id}</td>
       <td>
         <NavLink to={`/notices/${notice.id}`}>{notice.title}</NavLink>
       </td>
@@ -17,42 +18,6 @@ const NoticeTable = ({ notice, index }) => {
       <td>{notice.date}</td>
       <td> {notice.view}</td>
     </tr>
-  );
-};
-const Paging = () => {
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState();
-  useEffect(() => {
-    const fetchNotice = async () => {
-      const response = await axios({
-        method: 'GET',
-        url: 'http://localhost:5000/notices/',
-      });
-      const title = response.data;
-      console.log(`title=${JSON.stringify(response.data)}`);
-      // 역순으로 화면에 뿌리기 'reverse()
-      setCount(title.length);
-    };
-    fetchNotice();
-  }, []);
-  // const limit = notice.title.length;
-  // console.log(`limit=${limit}`);
-  // console.log(`count= ${count}`);
-
-  const handlePageChange = () => {
-    setPage(page);
-    // console.log(`pageNm = ${pageNumber}`);
-  };
-  return (
-    <section>
-      <Pagination
-        activePage={page}
-        itemsCountPerPage={3}
-        totalItemsCount={count}
-        pageRangeDisplayed={5}
-        onChange={handlePageChange}
-      />
-    </section>
   );
 };
 
@@ -65,7 +30,20 @@ const NoticeList = () => {
     navigate('/notices/newnotice');
   };
 
-  const [notices, setNotices] = useState([]);
+  const [notices, setNotices] = useState([]); // axios로 받아온 데이터 저장
+
+  // pagination
+  const [page, setPage] = useState(1); // 현재페이지
+  const [postPerPage] = useState(5); // 페이지 당 notice 개수
+  const [currentNotiece, setCurrentNotice] = useState([1]); // 보여줄 notice
+  const indexOfLastPost = page * postPerPage; // 1*10번 notice
+  const indexOfFirstPost = indexOfLastPost - postPerPage; // 10-10 = 0번 notice
+
+  console.log(`currentNotice=${currentNotiece}`);
+  const handlePageChange = page => {
+    setPage(page);
+    console.log(page);
+  };
 
   useEffect(() => {
     const fetchNotice = async () => {
@@ -75,11 +53,20 @@ const NoticeList = () => {
       });
       const title = response.data;
       console.log(`title=${JSON.stringify(response.data)}`);
-      // 역순으로 화면에 뿌리기 'reverse()
-      setNotices(title.reverse());
+      // 역순으로 화면에 뿌리기 'reverse()'
+      setNotices(title.length);
+      setCurrentNotice(
+        title.reverse().slice(indexOfFirstPost, indexOfLastPost)
+      );
     };
     fetchNotice();
-  }, []);
+  }, [indexOfFirstPost, indexOfLastPost]);
+
+  // useEffect(() => {
+  //   setCurrentNotice(
+  //     notices.reverse().slice(indexOfFirstPost, indexOfLastPost)
+  //   );
+  // }, [indexOfFirstPost, indexOfLastPost]);
 
   useEffect(() => {
     // const user = AuthService.getCurrentUser();
@@ -128,47 +115,29 @@ const NoticeList = () => {
               <td>date</td>
               <td>views</td>
             </tr>
-            {notices &&
-              notices.map((notice, index) => (
-                <NoticeTable key={notice.id} index={index} notice={notice} />
+            {currentNotiece &&
+              currentNotiece.map(notice => (
+                <NoticeTable
+                  key={notice.writer}
+                  index={notice.id}
+                  notice={notice}
+                />
               ))}
           </tbody>
         </Table>
       </section>
       {/* 페이지네이션 */}
-      <Paging />
-
-      {/* <section className='page__notice__pagenation'>
-        <nav aria-label='Page navigation example'>
-          <ul className='pagination justify-content-center'>
-            <li className='page-item disabled'>
-              <NavLink to='/' className='page-link'>
-                Previous
-              </NavLink>
-            </li>
-            <li className='page-item'>
-              <NavLink to='/' className='page-link'>
-                1
-              </NavLink>
-            </li>
-            <li className='page-item'>
-              <NavLink to='/' className='page-link'>
-                2
-              </NavLink>
-            </li>
-            <li className='page-item'>
-              <NavLink to='/' className='page-link'>
-                3
-              </NavLink>
-            </li>
-            <li className='page-item'>
-              <NavLink to='/' className='page-link'>
-                Next
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </section> */}
+      <section className='page__notice__pagenation'>
+        <Pagination
+          activePage={page}
+          itemsCountPerPage={postPerPage}
+          totalItemsCount={notices}
+          pageRangeDisplayed={5}
+          prevPageText={'‹'}
+          nextPageText={'›'}
+          onChange={handlePageChange}
+        />
+      </section>
     </div>
   );
 };

@@ -23,5 +23,10 @@ module.exports = {
     'react/prop-types': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/destructuring-assignment': 'off',
+    'no-shadow': 'off',
+    'react/jsx-curly-brace-presence': [
+      1,
+      { props: 'never', children: 'never' },
+    ],
   },
 };

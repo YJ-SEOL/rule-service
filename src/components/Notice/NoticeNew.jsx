@@ -69,7 +69,6 @@ const NoticeNew = () => {
     });
     console.log(`newnotice = ${newnotice}`);
     console.log(typeof description);
-
     console.log('제출');
     goBack();
   };
